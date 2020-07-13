@@ -58,7 +58,7 @@ services:
       #--providers.docker.constraints="Label(`traefik.enable`,`true`)"
     networks:
       - default
-      - ${TRAEFIK_NETWORK}
+      - traefik-public
     depends_on:
       - consul-leader
 
@@ -72,7 +72,7 @@ services:
       - 'CONSUL_LOCAL_CONFIG={"leave_on_terminate": true}'
     networks:
       - default
-      - ${TRAEFIK_NETWORK}
+      - traefik-public
     deploy:
       # consul-leader need to be constrainted to a fixed node, otherwise the consul cluster will elect failed while redeploy the stack.
       placement:
